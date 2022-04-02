@@ -1,3 +1,4 @@
+
 #### 目录
 
 * [Android 11 定位权限适配](#android-11-定位权限适配)
@@ -32,15 +33,15 @@
 
 * 还有如果你的应用只需要在前台使用定位功能， 而不需要在后台中使用定位功能，那么请不要连带申请 `Permission.ACCESS_BACKGROUND_LOCATION` 权限。
 
-![](picture/location_1.jpg)
+<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021738905.jpg" style="zoom:50%;" />
 
-![](picture/location_2.jpg)
+<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021738907.jpg" style="zoom:50%;" />
 
 #### Android 11 存储权限适配
 
 * 如果你的项目需要适配 Android 11 存储权限，那么需要先将 targetSdkVersion 进行升级
 
-```groovy
+``` groovy
 android 
     defaultConfig {
         targetSdkVersion 30
@@ -50,27 +51,27 @@ android
 
 * 再添加 Android 11 存储权限注册到清单文件中
 
-```xml
+``` xml
 <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 ```
 
 * 需要注意的是，旧版的存储权限也需要在清单文件中注册，因为在低于 Android 11 的环境下申请存储权限，框架会自动切换到旧版的申请方式
 
-```xml
+``` xml
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 ```
 
 * 还需要在清单文件中加上这个属性，否则在 Android 10 的设备上将无法正常读写外部存储上的文件
 
-```xml
+``` xml
 <application
     android:requestLegacyExternalStorage="true">
 ```
-    
+
 * 最后直接调用下面这句代码
 
-```java
+``` java
 XXPermissions.with(MainActivity.this)
         // 适配 Android 11 分区存储这样写
         //.permission(Permission.Group.STORAGE)
@@ -87,7 +88,7 @@ XXPermissions.with(MainActivity.this)
         });
 ```
 
-![](picture/7.jpg)
+![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021738909.jpg)
 
 #### 什么情况下需要适配分区存储特性
 
@@ -95,15 +96,15 @@ XXPermissions.with(MainActivity.this)
 
 * 分区存储的由来：谷歌之前收到了很多用户投诉，说很多应用都在 SD 卡下创建目录和文件，导致用户管理手机文件非常麻烦（强迫症的外国网友真多，哈哈），所以在 Android 10 版本更新中，谷歌要求所有开发者将媒体文件存放在自己内部目录或者 SD 卡内部目录中，不过谷歌在一版本上采取了宽松政策，在清单文件中加入 `android:requestLegacyExternalStorage="true"` 即可跳过这一特性的适配，不过在 Android 11 上面，你有两种选择：
 
-    1. 适配分区存储：这个是谷歌推荐的一种方式，但是会增加工作量，因为分区存储适配起来十分麻烦，我个人感觉是这样的。不过对于一些特定应用，例如文件管理器，文件备份工具，防病毒应用等这类应用它们就一定需要用到外部存储，这个时候就需要用第二种方式来实现了。
+  1. 适配分区存储：这个是谷歌推荐的一种方式，但是会增加工作量，因为分区存储适配起来十分麻烦，我个人感觉是这样的。不过对于一些特定应用，例如文件管理器，文件备份工具，防病毒应用等这类应用它们就一定需要用到外部存储，这个时候就需要用第二种方式来实现了。
 
-    2. 申请外部存储权限：这个是谷歌不推荐的一种方式，只需要 `MANAGE_EXTERNAL_STORAGE` 权限即可，适配起来基本无压力，但是会存在一个问题，就是上架谷歌应用市场的时候，要经过 Google Play 审核和批准。
+  2. 申请外部存储权限：这个是谷歌不推荐的一种方式，只需要 `MANAGE_EXTERNAL_STORAGE` 权限即可，适配起来基本无压力，但是会存在一个问题，就是上架谷歌应用市场的时候，要经过 Google Play 审核和批准。
 
 * 这两种总结下来，我觉得各有好坏，不过我可以跟大家谈谈我的看法
 
-    1. 如果你的应用需要上架谷歌应用市场，需要尽快适配分区存储，因为谷歌这次来真的了
+  1. 如果你的应用需要上架谷歌应用市场，需要尽快适配分区存储，因为谷歌这次来真的了
 
-    2. 如果你的应用只上架国内的应用市场，并且后续也没有上架谷歌应用市场的需要，那么你也可以直接申请 `MANAGE_EXTERNAL_STORAGE` 权限来读写外部存储
+  2. 如果你的应用只上架国内的应用市场，并且后续也没有上架谷歌应用市场的需要，那么你也可以直接申请 `MANAGE_EXTERNAL_STORAGE` 权限来读写外部存储
 
 #### 为什么授予了存储权限但是权限设置页还是显示未授权
 
@@ -117,7 +118,7 @@ XXPermissions.with(MainActivity.this)
 
 * 使用拦截的方式也很简单，具体有两种设置方式，一种针对局部设置，另外一种是全局设置
 
-```java
+``` java
 XXPermissions.with(this)
         .permission(Permission.XXX)
         // 设置权限请求拦截器（局部设置）
@@ -136,7 +137,7 @@ XXPermissions.with(this)
         });
 ```
 
-```java
+``` java
 public class XxxApplication extends Application {
 
     @Override
@@ -153,7 +154,7 @@ public class XxxApplication extends Application {
 
 * 需求场景：假设同时申请日历权限和录音权限，结果都被用户拒绝了，但是这两组权限中有一组权限被永久拒绝了，如何判断某一组权限有没有被永久拒绝？这里给出代码示例：
 
-```java
+``` java
 XXPermissions.with(this)
         .permission(Permission.RECORD_AUDIO)
         .permission(Permission.Group.CALENDAR)
@@ -198,7 +199,7 @@ XXPermissions.with(this)
 
 * 如果你还想用这种方式来申请权限，其实并不是没有办法，可以参考以下方式来实现
 
-```java
+``` java
 public class PermissionActivity extends AppCompatActivity implements OnPermissionCallback {
 
     @Override
@@ -256,17 +257,17 @@ public class PermissionActivity extends AppCompatActivity implements OnPermissio
 
 * 而 miui 优化开关是小米工程师预留的切换 miui 和原生的功能开关，例如在这个开关开启的时候，在应用详情页点击权限管理会跳转到小米的权限设置页，如果这个开关是关闭状态（默认是开启状态），在应用详情页点击权限管理会跳转到谷歌原生的权限设置页，具体效果如图：
 
-![](picture/miui_1.jpg)
+<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021739045.jpg" style="zoom:50%;" />
 
-![](picture/miui_2.jpg)
+<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021738916.jpg" style="zoom:50%;" />
 
 * 最大的问题在于：这两个界面是不同的 Activity，一个是小米定制的权限设置页，第二个是谷歌原生的权限设置页，当 miui 优化开启的时候，在小米定制的权限设置页授予权限才能有效果，当这个 miui 优化关闭的时候，在谷歌原生的权限设置页授予权限才能有效果。而跳转到国产手机页永远只会跳转到小米定制的那个权限设置页，所以就会导致当 miui 优化关闭的时候，使用代码跳转到小米权限设置页授予了权限之后返回仍然显示失败的问题。
 
 * 有人可能会说，解决这个问题的方式很简单，判断 miui 优化开关，如果是开启状态就跳转到小米定制的权限设置页，如果是关闭状态就跳转到谷歌原生的权限设置页，这样不就可以了？其实这个解决方案我也有尝试过，我曾委托联系到在小米工作的 miui 工程师，也有人帮我反馈这个问题给小米那边，最后得到答复都是一致的。
 
-![](picture/miui_3.jpg)
+<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021738917.jpg" style="zoom:50%;" />
 
-![](picture/miui_4.jpg)
+<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021738566.jpg" style="zoom:50%;" />
 
 * 另外值得一提的是 [Android 11 对软件包可见性进行了限制](https://developer.android.google.cn/about/versions/11/privacy/package-visibility)，所以这种跳包名的方式在未来将会完全不可行。
 
