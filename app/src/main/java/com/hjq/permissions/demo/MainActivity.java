@@ -50,7 +50,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         int viewId = view.getId();
         if (viewId == R.id.btn_main_request_single) {
-
+            // 申请单个危险权限
             XXPermissions.with(this)
                     .permission(Permission.CAMERA)
                     .interceptor(new PermissionInterceptor())
@@ -65,7 +65,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_group) {
-
+            // 申请多个危险权限
             XXPermissions.with(this)
                     .permission(Permission.RECORD_AUDIO)
                     .permission(Permission.Group.CALENDAR)
@@ -81,7 +81,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_location) {
-
+            // 申请定位权限组
             XXPermissions.with(this)
                     .permission(Permission.ACCESS_COARSE_LOCATION)
                     .permission(Permission.ACCESS_FINE_LOCATION)
@@ -99,15 +99,13 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_bluetooth) {
-
+            // 申请蓝牙权限
             long delayMillis = 0;
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 delayMillis = 2000;
                 toast("当前版本不是 Android 12 及以上，旧版本的需要定位权限才能进行扫描蓝牙");
             }
-
             view.postDelayed(new Runnable() {
-
                 @Override
                 public void run() {
                     XXPermissions.with(MainActivity.this)
@@ -128,7 +126,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
             }, delayMillis);
 
         } else if (viewId == R.id.btn_main_request_storage) {
-
+            //申请新版存储权限
             long delayMillis = 0;
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 delayMillis = 2000;
@@ -158,7 +156,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
             }, delayMillis);
 
         } else if (viewId == R.id.btn_main_request_install) {
-
+            // 申请安装包权限
             XXPermissions.with(this)
                     .permission(Permission.REQUEST_INSTALL_PACKAGES)
                     .interceptor(new PermissionInterceptor())
@@ -171,7 +169,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_window) {
-
+            // 申请悬浮窗权限
             XXPermissions.with(this)
                     .permission(Permission.SYSTEM_ALERT_WINDOW)
                     .interceptor(new PermissionInterceptor())
@@ -184,7 +182,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_setting) {
-
+            // 申请系统设置权限
             XXPermissions.with(this)
                     .permission(Permission.WRITE_SETTINGS)
                     .interceptor(new PermissionInterceptor())
@@ -197,7 +195,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_notification) {
-
+            // 申请通知栏权限
             XXPermissions.with(this)
                     .permission(Permission.NOTIFICATION_SERVICE)
                     .interceptor(new PermissionInterceptor())
@@ -210,7 +208,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_notification_listener) {
-
+            // 申请通知栏监听权限
             XXPermissions.with(this)
                     .permission(Permission.BIND_NOTIFICATION_LISTENER_SERVICE)
                     .interceptor(new PermissionInterceptor())
@@ -226,7 +224,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_package) {
-
+            // 申请使用统计权限
             XXPermissions.with(this)
                     .permission(Permission.PACKAGE_USAGE_STATS)
                     .interceptor(new PermissionInterceptor())
@@ -239,7 +237,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_alarm) {
-
+            // 申请闹钟提醒权限
             XXPermissions.with(this)
                     .permission(Permission.SCHEDULE_EXACT_ALARM)
                     .interceptor(new PermissionInterceptor())
@@ -252,7 +250,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_request_not_disturb) {
-
+            // 申请勿扰权限
             XXPermissions.with(this)
                     .permission(Permission.ACCESS_NOTIFICATION_POLICY)
                     .interceptor(new PermissionInterceptor())
@@ -265,7 +263,7 @@ public final class MainActivity extends AppCompatActivity implements View.OnClic
                     });
 
         } else if (viewId == R.id.btn_main_app_details) {
-
+            // 跳转到应用详情页
             XXPermissions.startPermissionActivity(this);
         }
     }

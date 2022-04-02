@@ -281,7 +281,6 @@ public final class XXPermissions {
     }
 
     /* android.app.Activity */
-
     public static void startPermissionActivity(Activity activity) {
         startPermissionActivity(activity, (List<String>) null);
     }

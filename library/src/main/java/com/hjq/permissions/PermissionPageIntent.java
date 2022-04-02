@@ -36,9 +36,7 @@ final class PermissionPageIntent {
 
         // 如果当前只有一个权限被拒绝了
         if (permissions.size() == 1) {
-
             String permission = permissions.get(0);
-
             if (Permission.MANAGE_EXTERNAL_STORAGE.equals(permission)) {
                 return getStoragePermissionIntent(context);
             }

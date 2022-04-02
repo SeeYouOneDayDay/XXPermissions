@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 32
+    // 修改31版本,可以直接查看关联的31源码
+    //32 查看不了源码: https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021808620.png
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.hjq.permissions.demo"
