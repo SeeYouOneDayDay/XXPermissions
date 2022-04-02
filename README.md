@@ -12,35 +12,13 @@
 
 * 另外想对 Android 6.0 权限需要深入了解的，可以看这篇文章[Android 6.0 运行权限解析](https://www.jianshu.com/p/6a4dff744031)
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718269.jpg)
+![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718269.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718272.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021743505.jpg)
 
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718272.jpg)
+![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718273.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719274.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719510.jpg)
 
+![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719204.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021744705.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719646.jpg)
 
-
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021743505.jpg)
-
-
-
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718273.jpg)
-
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719274.jpg)
-
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719510.jpg)
-
-
-
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719204.jpg)
-
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021744705.jpg)
-
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719646.jpg)
-
-
-
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719841.jpg)
-
- ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719033.jpg)
+![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719841.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719033.jpg)
 
 
 
