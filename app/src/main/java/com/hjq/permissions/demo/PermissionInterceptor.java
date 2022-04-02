@@ -57,8 +57,6 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
         }
     }
 
-
-
     @Override
     public void deniedPermissions(Activity activity, List<String> allPermissions, List<String> deniedPermissions,
                                   boolean never, OnPermissionCallback callback) {
