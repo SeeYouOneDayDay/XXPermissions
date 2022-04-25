@@ -68,7 +68,6 @@ public final class Permission {
     public static final String READ_EXTERNAL_STORAGE = "android.permission.READ_EXTERNAL_STORAGE";
     /** 写入外部存储 */
     public static final String WRITE_EXTERNAL_STORAGE = "android.permission.WRITE_EXTERNAL_STORAGE";
-
     /** 相机权限 */
     public static final String CAMERA = "android.permission.CAMERA";
 
@@ -138,7 +137,9 @@ public final class Permission {
      *             所以你要是申请了这个权限之后没有弹授权框，而是直接回调授权失败方法
      *             请不要惊慌，这个不是 Bug、不是 Bug、不是 Bug，而是正常现象
      *
-     * 后续情况汇报：有人反馈在 iQOO 手机上面获取不到该权限，在清单文件加入下面这个权限就可以了（这里只是做记录，并不代表这种方式就一定有效果）
+     * 后续情况汇报：有人反馈在 iQOO 手机上面获取不到该权限，
+     * 在清单文件加入下面这个权限就可以了（这里只是做记录，并不代表这种方式就一定有效果），这是高版本获取方案
+     *
      *             <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
      */
     public static final String READ_PHONE_STATE = "android.permission.READ_PHONE_STATE";

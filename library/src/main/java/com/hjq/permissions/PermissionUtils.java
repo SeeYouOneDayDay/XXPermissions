@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Surface;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -76,9 +77,12 @@ final class PermissionUtils {
                     if (!"uses-permission".equals(parser.getName())) {
                         continue;
                     }
-
-                    manifestPermissions.put(parser.getAttributeValue(getAndroidNamespace(), "name"),
-                            parser.getAttributeIntValue(getAndroidNamespace(), "maxSdkVersion", Integer.MAX_VALUE));
+                    String key = parser.getAttributeValue(getAndroidNamespace(), "name");
+                    int v = parser.getAttributeIntValue(getAndroidNamespace()
+                            , "maxSdkVersion", Integer.MAX_VALUE);
+//                    Log.i("sanbo", key
+//                            + "---->" + v + "-----" + parser.getName());
+                    manifestPermissions.put(key, v);
 
                 } while (parser.next() != XmlResourceParser.END_DOCUMENT);
 
@@ -89,6 +93,7 @@ final class PermissionUtils {
             }
         }
 
+        // 两种方式的区别是什么？为兼容什么设备？
         if (manifestPermissions.isEmpty()) {
             try {
                 // 当清单文件没有注册任何权限的时候，那么这个数组对象就是空的
@@ -197,7 +202,7 @@ final class PermissionUtils {
         do {
             if (context instanceof Activity) {
                 return (Activity) context;
-            } else if (context instanceof ContextWrapper){
+            } else if (context instanceof ContextWrapper) {
                 context = ((ContextWrapper) context).getBaseContext();
             } else {
                 return null;

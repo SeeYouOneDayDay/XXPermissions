@@ -86,14 +86,18 @@ public final class PermissionFragment extends Fragment implements Runnable {
      * 绑定 Activity
      */
     public void attachActivity(Activity activity) {
-        activity.getFragmentManager().beginTransaction().add(this, this.toString()).commitAllowingStateLoss();
+        activity.getFragmentManager().beginTransaction()
+                .add(this, this.toString())
+                .commitAllowingStateLoss();
     }
 
     /**
      * 解绑 Activity
      */
     public void detachActivity(Activity activity) {
-        activity.getFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+        activity.getFragmentManager()
+                .beginTransaction().remove(this)
+                .commitAllowingStateLoss();
     }
 
     /**
@@ -160,7 +164,8 @@ public final class PermissionFragment extends Fragment implements Runnable {
         if (activity == null || mScreenOrientation != ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED) {
             return;
         }
-        // 为什么这里不用跟上面一样 try catch ？因为这里是把 Activity 方向取消固定，只有设置横屏或竖屏的时候才可能触发 crash
+        // 为什么这里不用跟上面一样 try catch ？
+        // 因为这里是把 Activity 方向取消固定，只有设置横屏或竖屏的时候才可能触发 crash
         activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
     }
 

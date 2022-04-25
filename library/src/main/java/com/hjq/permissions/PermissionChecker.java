@@ -207,7 +207,7 @@ final class PermissionChecker {
             }
         }
 
-        // 判断是否包含后台定位权限
+        // 判断是否包含后台定位权限 @TODO？ 不兼容不在后台获取的权限？
         if (!requestPermissions.contains(Permission.ACCESS_BACKGROUND_LOCATION)) {
             return;
         }
@@ -228,8 +228,10 @@ final class PermissionChecker {
                 continue;
             }
 
-            // 因为包含了后台定位权限，所以请不要申请和定位无关的权限，因为在 Android 11 上面，后台定位权限不能和其他非定位的权限一起申请
-            // 否则会出现只申请了后台定位权限，其他权限会被回绝掉的情况，因为在 Android 11 上面，后台定位权限是要跳 Activity，并非弹 Dialog
+            // 因为包含了后台定位权限，所以请不要申请和定位无关的权限，
+            // 因为在 Android 11 上面，后台定位权限不能和其他非定位的权限一起申请
+            // 否则会出现只申请了后台定位权限，其他权限会被回绝掉的情况，
+            // 因为在 Android 11 上面，后台定位权限是要跳 Activity，并非弹 Dialog
             // 另外如果你的应用没有后台定位的需求，请不要一同申请 Permission.ACCESS_BACKGROUND_LOCATION 权限
             throw new IllegalArgumentException("Because it includes background location permissions, " +
                     "do not apply for permissions unrelated to location");
@@ -285,6 +287,9 @@ final class PermissionChecker {
             throw new IllegalStateException("No permissions are registered in the AndroidManifest.xml file");
         }
 
+        // 安卓7以上版本，取最小版本。否则默认采用安卓6.
+        // 安卓4.5的安装列表貌似不能兼容 -- 国产设备弹窗
+        // 安卓5.6涉及opsd的也可能问题
         int minSdkVersion = Build.VERSION.SDK_INT >= AndroidVersion.ANDROID_7 ?
                 context.getApplicationInfo().minSdkVersion : AndroidVersion.ANDROID_6;
 
