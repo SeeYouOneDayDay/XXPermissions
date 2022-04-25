@@ -11,8 +11,10 @@ import android.os.Build;
 @SuppressWarnings("all")
 final class AndroidVersion {
 
-    static final int ANDROID_12_L = Build.VERSION_CODES.S_V2;
-    static final int ANDROID_12 = Build.VERSION_CODES.S;
+//    static final int ANDROID_12_L = Build.VERSION_CODES.S_V2;
+    static final int ANDROID_12_L = 32;
+//    static final int ANDROID_12 = Build.VERSION_CODES.S;
+    static final int ANDROID_12 = 31;
     static final int ANDROID_11 = Build.VERSION_CODES.R;
     static final int ANDROID_10 = Build.VERSION_CODES.Q;
     static final int ANDROID_9 = Build.VERSION_CODES.P;
