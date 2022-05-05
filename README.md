@@ -1,26 +1,24 @@
 # 权限请求框架
 
-<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718265.png" style="zoom:50%;" />
+![](logo.png)
 
 * 项目地址：[Github](https://github.com/getActivity/XXPermissions)、[码云](https://gitee.com/getActivity/XXPermissions)
 
 * 博文地址：[一句代码搞定权限请求，从未如此简单](https://www.jianshu.com/p/c69ff8a445ed)
 
-* 可以扫码下载 Demo 进行演示或者测试，如果扫码下载不了的，[点击此处可直接下载](https://github.com/getActivity/XXPermissions/releases/download/13.5/XXPermissions.apk)
+* 可以扫码下载 Demo 进行演示或者测试，如果扫码下载不了的，[点击此处可直接下载](https://github.com/getActivity/XXPermissions/releases/download/13.6/XXPermissions.apk)
 
-<img src="https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021747427.png" style="zoom:50%;" />
+![](picture/demo_code.png)
 
 * 另外想对 Android 6.0 权限需要深入了解的，可以看这篇文章[Android 6.0 运行权限解析](https://www.jianshu.com/p/6a4dff744031)
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718269.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718272.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021743505.jpg)
+![](picture/1.jpg) ![](picture/2.jpg) ![](picture/3.jpg)
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021718273.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719274.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719510.jpg)
+![](picture/4.jpg) ![](picture/5.jpg) ![](picture/6.jpg)
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719204.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021744705.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719646.jpg)
+![](picture/7.jpg) ![](picture/8.jpg) ![](picture/9.jpg)
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719841.jpg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719033.jpg)
-
-
+![](picture/10.jpg) ![](picture/11.jpg) ![](picture/12.jpg)
 
 #### 集成步骤
 
@@ -59,7 +57,7 @@ android {
 
 dependencies {
     // 权限请求框架：https://github.com/getActivity/XXPermissions
-    implementation 'com.github.getActivity:XXPermissions:13.5'
+    implementation 'com.github.getActivity:XXPermissions:13.6'
 }
 ```
 
@@ -101,7 +99,7 @@ android.enableJetifier = true
 
 * Java 用法示例
 
-``` java
+```java
 XXPermissions.with(this)
         // 申请单个权限
         .permission(Permission.RECORD_AUDIO)
@@ -137,7 +135,7 @@ XXPermissions.with(this)
 
 * Kotlin 用法示例
 
-``` kotlin
+```kotlin
 XXPermissions.with(this)
     // 申请单个权限
     .permission(Permission.RECORD_AUDIO)
@@ -169,29 +167,9 @@ XXPermissions.with(this)
     })
 ```
 
-#### 从系统权限设置页返回判断
-
-``` java
-public class XxxActivity extends AppCompatActivity {
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == XXPermissions.REQUEST_CODE) {
-            if (XXPermissions.isGranted(this, Permission.RECORD_AUDIO) &&
-                    XXPermissions.isGranted(this, Permission.Group.CALENDAR)) {
-                toast("用户已经在权限设置页授予了录音和日历权限");
-            } else {
-                toast("用户没有在权限设置页授予权限");
-            }
-        }
-    }
-}
-```
-
 #### 框架其他 API 介绍
 
-``` java
+```java
 // 判断一个或多个权限是否全部授予了
 XXPermissions.isGranted(Context context, String... permissions);
 
@@ -231,29 +209,30 @@ XXPermissions.setInterceptor(new IPermissionInterceptor() {});
 
 #### 同类权限请求框架之间的对比
 
-|       适配细节       | [XXPermissions](https://github.com/getActivity/XXPermissions) | [AndPermission](https://github.com/yanzhenjie/AndPermission) |   [PermissionX](https://github.com/guolindev/PermissionX)    | [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode) | [RxPermissions](https://github.com/tbruyelle/RxPermissions)  | [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) | [EasyPermissions](https://github.com/googlesamples/easypermissions) |
-| :------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|       对应版本       |                             13.5                             |                            2.0.3                             |                            1.6.1                             |                            1.31.0                            |                             0.12                             |                            4.9.1                             |                            3.0.0                             |
-|      issues 数       | [![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719155.svg)](https://github.com/getActivity/XXPermissions/issues) | [![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719157.svg)](https://github.com/yanzhenjie/AndPermission/issues) | [![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719297.svg)](https://github.com/guolindev/PermissionX/issues) | [![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719027.svg)](https://github.com/Blankj/AndroidUtilCode/issues) | [![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719387.svg)](https://github.com/tbruyelle/RxPermissions/issues) | [![](https://img.shields.io/github/issues/permissions-dispatcher/PermissionsDispatcher.svg)](https://github.com/permissions-dispatcher/PermissionsDispatcher/issues) | [![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719307.svg)](https://github.com/googlesamples/easypermissions/issues) |
-|       框架体积       |                            37 KB                             |                            127 KB                            |                            78 KB                             |                            500 KB                            |                            28 KB                             |                            91 KB                             |                            48 KB                             |
-|     闹钟提醒权限     |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-|   所有文件管理权限   |                              ✅                               |                              ❌                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-|      安装包权限      |                              ✅                               |                              ✅                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-|      悬浮窗权限      |                              ✅                               |                              ✅                               |                              ✅                               |                              ✅                               |                              ❌                               |                              ✅                               |                              ❌                               |
-|     系统设置权限     |                              ✅                               |                              ✅                               |                              ✅                               |                              ✅                               |                              ❌                               |                              ✅                               |                              ❌                               |
-|      通知栏权限      |                              ✅                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-|    通知栏监听权限    |                              ✅                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-|       勿扰权限       |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-| 查看应用使用情况权限 |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-| Android 12 危险权限  |                              ✅                               |                              ❌                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-| Android 11 危险权限  |                              ✅                               |                              ❌                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-| Android 10 危险权限  |                              ✅                               |                              ✅                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ✅                               |                              ❌                               |
-| Android 9.0 危险权限 |                              ✅                               |                              ❌                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ✅                               |                              ❌                               |
-| Android 8.0 危险权限 |                              ✅                               |                              ✅                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ✅                               |                              ❌                               |
-| 新权限自动兼容旧设备 |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-| 屏幕方向旋转场景适配 |                              ✅                               |                              ✅                               |                              ✅                               |                              ❌                               |                              ❌                               |                              ✅                               |                              ❌                               |
-| 后台申请权限场景适配 |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
-|     错误检测机制     |                              ✅                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |                              ❌                               |
+|     适配细节    | [XXPermissions](https://github.com/getActivity/XXPermissions)  | [AndPermission](https://github.com/yanzhenjie/AndPermission) | [PermissionX](https://github.com/guolindev/PermissionX) |  [AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode)   | [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher) | [RxPermissions](https://github.com/tbruyelle/RxPermissions) |  [EasyPermissions](https://github.com/googlesamples/easypermissions) |
+| :--------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: | :------------: |
+|    对应版本  |  13.6 |  2.0.3  |  1.6.3    |  1.31.0    |   4.9.2  |  0.12   |  3.0.0   |
+|    issues 数   |  [![](https://img.shields.io/github/issues/getActivity/XXPermissions.svg)](https://github.com/getActivity/XXPermissions/issues)  |  [![](https://img.shields.io/github/issues/yanzhenjie/AndPermission.svg)](https://github.com/yanzhenjie/AndPermission/issues)  |  [![](https://img.shields.io/github/issues/guolindev/PermissionX.svg)](https://github.com/guolindev/PermissionX/issues)  |  [![](https://img.shields.io/github/issues/Blankj/AndroidUtilCode.svg)](https://github.com/Blankj/AndroidUtilCode/issues)  |  [![](https://img.shields.io/github/issues/permissions-dispatcher/PermissionsDispatcher.svg)](https://github.com/permissions-dispatcher/PermissionsDispatcher/issues)  |  [![](https://img.shields.io/github/issues/tbruyelle/RxPermissions.svg)](https://github.com/tbruyelle/RxPermissions/issues)  |  [![](https://img.shields.io/github/issues/googlesamples/easypermissions.svg)](https://github.com/googlesamples/easypermissions/issues)  |
+|    框架体积  |  38 KB  | 127 KB  |  90 KB  |   500 KB |  99 KB  | 28 KB  | 48 KB |
+|       闹钟提醒权限       |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |
+|     所有文件管理权限      |  ✅  |  ❌  |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |
+|        安装包权限        |  ✅  |  ✅  |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |
+|        悬浮窗权限        |  ✅  |  ✅  |  ✅  |  ✅  |  ✅  |  ❌  |  ❌  |
+|       系统设置权限       |  ✅  |  ✅  |  ✅  |  ✅  |  ✅  |  ❌  |  ❌  |
+|        通知栏权限        |  ✅  |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |
+|       通知栏监听权限      |  ✅  |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |
+|         勿扰权限         |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |
+|     忽略电池优化权限       |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |
+|     查看应用使用情况权限   |  ✅  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |  ❌  |
+|    Android 12 危险权限   |  ✅  |  ❌  |  ✅  |  ❌ |  ❌  |   ❌  |  ❌  |
+|    Android 11 危险权限   |  ✅  |  ❌  |  ✅  |  ❌ |  ❌  |   ❌  |  ❌  |
+|    Android 10 危险权限   |  ✅  |  ✅  |  ✅  |  ❌ |  ✅  |   ❌  |  ❌  |
+|    Android 9.0 危险权限  |  ✅  |  ❌  |  ✅  |  ❌ |  ✅  |   ❌  |  ❌  |
+|    Android 8.0 危险权限  |  ✅  |  ✅  |  ✅  |  ❌ |  ✅  |   ❌  |  ❌  |
+|    新权限自动兼容旧设备    |  ✅  |  ❌  |  ❌  |  ❌ |  ❌  |  ❌   |  ❌  |
+|    屏幕方向旋转场景适配    |  ✅  |  ✅  |  ✅  |  ❌ |  ✅  |  ❌   |  ❌  |
+|    后台申请权限场景适配    |  ✅  |  ❌  |  ❌  |  ❌ |  ❌  |  ❌   |  ❌  |
+|       错误检测机制        |  ✅  |  ❌  |  ❌  |  ❌ |  ❌  |  ❌   |  ❌  |
 
 #### 新权限自动兼容旧设备介绍
 
@@ -325,45 +304,47 @@ XXPermissions.setInterceptor(new IPermissionInterceptor() {});
 
 #### 作者的其他开源项目
 
-* 安卓技术中台：[AndroidProject](https://github.com/getActivity/AndroidProject) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719497.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719550.svg)
+* 安卓技术中台：[AndroidProject](https://github.com/getActivity/AndroidProject) ![](https://img.shields.io/github/stars/getActivity/AndroidProject.svg) ![](https://img.shields.io/github/forks/getActivity/AndroidProject.svg)
 
-* 安卓技术中台 Kt 版：[AndroidProject-Kotlin](https://github.com/getActivity/AndroidProject-Kotlin) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719434.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719544.svg)
+* 安卓技术中台 Kt 版：[AndroidProject-Kotlin](https://github.com/getActivity/AndroidProject-Kotlin) ![](https://img.shields.io/github/stars/getActivity/AndroidProject-Kotlin.svg) ![](https://img.shields.io/github/forks/getActivity/AndroidProject-Kotlin.svg)
 
-* 吐司框架：[ToastUtils](https://github.com/getActivity/ToastUtils) ![](https://img.shields.io/github/stars/getActivity/ToastUtils.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719486.svg)
+* 吐司框架：[ToastUtils](https://github.com/getActivity/ToastUtils) ![](https://img.shields.io/github/stars/getActivity/ToastUtils.svg) ![](https://img.shields.io/github/forks/getActivity/ToastUtils.svg)
 
-* 网络框架：[EasyHttp](https://github.com/getActivity/EasyHttp) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719764.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719393.svg)
+* 网络框架：[EasyHttp](https://github.com/getActivity/EasyHttp) ![](https://img.shields.io/github/stars/getActivity/EasyHttp.svg) ![](https://img.shields.io/github/forks/getActivity/EasyHttp.svg)
 
-* 标题栏框架：[TitleBar](https://github.com/getActivity/TitleBar) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719844.svg) ![](https://img.shields.io/github/forks/getActivity/TitleBar.svg)
+* 标题栏框架：[TitleBar](https://github.com/getActivity/TitleBar) ![](https://img.shields.io/github/stars/getActivity/TitleBar.svg) ![](https://img.shields.io/github/forks/getActivity/TitleBar.svg)
 
-* 悬浮窗框架：[XToast](https://github.com/getActivity/XToast) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719934.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719996.svg)
+* 悬浮窗框架：[XToast](https://github.com/getActivity/XToast) ![](https://img.shields.io/github/stars/getActivity/XToast.svg) ![](https://img.shields.io/github/forks/getActivity/XToast.svg)
 
-* Shape 框架：[ShapeView](https://github.com/getActivity/ShapeView) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719009.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719180.svg)
+* Shape 框架：[ShapeView](https://github.com/getActivity/ShapeView) ![](https://img.shields.io/github/stars/getActivity/ShapeView.svg) ![](https://img.shields.io/github/forks/getActivity/ShapeView.svg)
 
-* 语种切换框架：[MultiLanguages](https://github.com/getActivity/MultiLanguages) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719641.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719547.svg)
+* 语种切换框架：[MultiLanguages](https://github.com/getActivity/MultiLanguages) ![](https://img.shields.io/github/stars/getActivity/MultiLanguages.svg) ![](https://img.shields.io/github/forks/getActivity/MultiLanguages.svg)
 
-* Gson 解析容错：[GsonFactory](https://github.com/getActivity/GsonFactory) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719633.svg) ![](https://img.shields.io/github/forks/getActivity/GsonFactory.svg)
+* Gson 解析容错：[GsonFactory](https://github.com/getActivity/GsonFactory) ![](https://img.shields.io/github/stars/getActivity/GsonFactory.svg) ![](https://img.shields.io/github/forks/getActivity/GsonFactory.svg)
 
-* 日志查看框架：[Logcat](https://github.com/getActivity/Logcat) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719797.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719365.svg)
+* 日志查看框架：[Logcat](https://github.com/getActivity/Logcat) ![](https://img.shields.io/github/stars/getActivity/Logcat.svg) ![](https://img.shields.io/github/forks/getActivity/Logcat.svg)
 
-* Android 版本适配：[AndroidVersionAdapter](https://github.com/getActivity/AndroidVersionAdapter) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719717.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719073.svg)
+* Android 版本适配：[AndroidVersionAdapter](https://github.com/getActivity/AndroidVersionAdapter) ![](https://img.shields.io/github/stars/getActivity/AndroidVersionAdapter.svg) ![](https://img.shields.io/github/forks/getActivity/AndroidVersionAdapter.svg)
 
-* Android 代码规范：[AndroidCodeStandard](https://github.com/getActivity/AndroidCodeStandard) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719234.svg) ![](https://img.shields.io/github/forks/getActivity/AndroidCodeStandard.svg)
+* Android 代码规范：[AndroidCodeStandard](https://github.com/getActivity/AndroidCodeStandard) ![](https://img.shields.io/github/stars/getActivity/AndroidCodeStandard.svg) ![](https://img.shields.io/github/forks/getActivity/AndroidCodeStandard.svg)
 
-* Studio 精品插件：[StudioPlugins](https://github.com/getActivity/StudioPlugins) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719259.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719357.svg)
+* Android 开源排行榜：[AndroidGithubBoss](https://github.com/getActivity/AndroidGithubBoss) ![](https://img.shields.io/github/stars/getActivity/AndroidGithubBoss.svg) ![](https://img.shields.io/github/forks/getActivity/AndroidGithubBoss.svg)
 
-* 表情包大集合：[EmojiPackage](https://github.com/getActivity/EmojiPackage) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719410.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719372.svg)
+* Studio 精品插件：[StudioPlugins](https://github.com/getActivity/StudioPlugins) ![](https://img.shields.io/github/stars/getActivity/StudioPlugins.svg) ![](https://img.shields.io/github/forks/getActivity/StudioPlugins.svg)
 
-* 省市区 Json 数据：[ProvinceJson](https://github.com/getActivity/ProvinceJson) ![](https://img.shields.io/github/stars/getActivity/ProvinceJson.svg) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719330.svg)
+* 表情包大集合：[EmojiPackage](https://github.com/getActivity/EmojiPackage) ![](https://img.shields.io/github/stars/getActivity/EmojiPackage.svg) ![](https://img.shields.io/github/forks/getActivity/EmojiPackage.svg)
+
+* 省市区 Json 数据：[ProvinceJson](https://github.com/getActivity/ProvinceJson) ![](https://img.shields.io/github/stars/getActivity/ProvinceJson.svg) ![](https://img.shields.io/github/forks/getActivity/ProvinceJson.svg)
 
 #### 微信公众号：Android轮子哥
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719912.png)
+![](https://raw.githubusercontent.com/getActivity/Donate/master/picture/official_ccount.png)
 
 #### Android 技术 Q 群：10047167
 
 #### 如果您觉得我的开源库帮你节省了大量的开发时间，请扫描下方的二维码随意打赏，要是能打赏个 10.24 :monkey_face:就太:thumbsup:了。您的支持将鼓励我继续创作:octocat:
 
-![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719822.png) ![](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202204021719536.png)
+![](https://raw.githubusercontent.com/getActivity/Donate/master/picture/pay_ali.png) ![](https://raw.githubusercontent.com/getActivity/Donate/master/picture/pay_wechat.png)
 
 #### [点击查看捐赠列表](https://github.com/getActivity/Donate)
 
